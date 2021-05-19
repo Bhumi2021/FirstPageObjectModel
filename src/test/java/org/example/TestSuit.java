@@ -31,8 +31,9 @@ public class TestSuit extends BaseTest {
     public void userShouldAbleToChangeCurrencySuccessFully(){
         //Verify user should able to change currency successfully
         //calling methods
-        homePage.changeCurrency();
-        registerResultPage.verifyChangeCurrency();
+        homePage.selectEuroCurrency();
+        homePage.verifyChangeOfCurrencySymbolInEachProductPrice();
+
     }
     @Test
     public void userShouldAbleToSearchNikeProductsSuccessfully(){
@@ -40,6 +41,7 @@ public class TestSuit extends BaseTest {
         //calling methods
         homePage.nikeProducts();
         searchPageNike.searchNikeProducts();
+
     }
     @Test
     public void userShouldAbleToSeeAddToCArtButtonForAllProducts(){
@@ -58,6 +60,7 @@ public class TestSuit extends BaseTest {
         registerResultPage.verifyCommentAddedSuccessfully();
         registerResultPage.verifyCommentIsPresentInCommentBox();
         registerResultPage.verifyCommentsDisplayedLast();
+        registerResultPage.verifyTitleIsPresentInCommentBox();
 
     }
 }

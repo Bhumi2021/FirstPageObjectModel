@@ -6,10 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class Utils extends BasePage {
+public class Utils extends BasePage{
+    LoadProperty loadProperty=new LoadProperty();
+
     //method for wait for clickable
     public static void waitForClickable(By by,int time){
       WebDriverWait wait=new WebDriverWait(driver,time);
@@ -38,6 +42,10 @@ public class Utils extends BasePage {
         Select select = new Select(driver.findElement(by));
         select.selectByValue(text);
     }
+    public static String getSelectedTExtFromDropDown(By by) {
+        Select select = new Select(driver.findElement(by));
+        return select.getFirstSelectedOption().getText();
+    }
     //method for get text from elements
     public static String getTextFromElement(By by) {
 
@@ -63,6 +71,23 @@ public class Utils extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public String getCurrencySymbol(String currencyName){
+        String currencySymbol=null;
+        //using switch
+
+        switch (currencyName){
+            case "US Dollar":
+                currencySymbol="$";
+                break;
+            case "Euro":
+                currencySymbol="€";
+                break;
+            default:
+                System.out.println("Currency is not available");
+
+        }
+        return currencySymbol;
     }
 
 
