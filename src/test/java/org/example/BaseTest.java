@@ -1,28 +1,31 @@
 package org.example;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest extends Utils {
+    BrowserSelector browserSelector=new BrowserSelector();
+
+
     @BeforeMethod
     public void openBrowser() {
-        //setting up chromedriver path from system
-        System.setProperty("webdriver.chrome.driver","src/test/resources/BrowserDriver/chromedriver.exe");
-        //creating object for driver
-        driver = new ChromeDriver();
-        //maximise the browser window
-        driver.manage().window().maximize();
-        //applying implicitly wait to driver object
-        driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
+        //open the browser
+        browserSelector.openBrowser();
         //open URL
         driver.get("https://demo.nopcommerce.com/");
     }
 
    @AfterMethod
-  public void closeBrowser() {
+   public void closeBrowser(ITestResult result) {
+     //Capture screenSort when test case fail
+      if (!result.isSuccess())
+      {
+           captureScreenShot(result.getName());
+      }
       //close the URL
        driver.close();
   }

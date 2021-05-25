@@ -7,7 +7,7 @@ import org.testng.Assert;
 import java.util.List;
 
 public class SearchPageNike extends Utils{
-    private By _itemBoxField=By.className("item-box");
+    private By _itemBoxField=By.xpath("//div[starts-with(@class,'item-box')]");
     private By _proDuctNameField=By.cssSelector("h2.product-title");
 
     public void searchNikeProducts(){

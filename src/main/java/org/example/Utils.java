@@ -1,14 +1,17 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Utils extends BasePage{
@@ -88,6 +91,20 @@ public class Utils extends BasePage{
 
         }
         return currencySymbol;
+    }
+    public static String dateStamp()
+    {
+        SimpleDateFormat format=new SimpleDateFormat("ddMMyyHHmmSS");
+        return format.format(new Date());
+    }
+    public static void captureScreenShot(String screenShotName){
+        File screenShotFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenShotFile, new File("src/test/resources/screenshots" + screenShotName + dateStamp() + ".jpg"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 

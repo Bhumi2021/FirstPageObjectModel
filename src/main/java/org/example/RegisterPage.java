@@ -5,18 +5,18 @@ import org.openqa.selenium.By;
 import java.sql.Timestamp;
 
 public class RegisterPage extends Utils {
-    private By _newsletter=By.id("newsletter-subscribe-button");
-    private By _gender=By.xpath("//input[@id='gender-male']");
-    private By _firstName=By.id("FirstName");
-    private By _lastName=By.id("LastName");
-    private By _dateOfBirth=By.name("DateOfBirthDay");
-    private By _dateOfMonth=By.name("DateOfBirthMonth");
-    private By _dateOfYear=By.name("DateOfBirthYear");
-    private By _emailId=By.id("Email");
-    private By _company=By.id("Company");
-    private By _password=By.id("Password");
-    private By _confirmPassword=By.id("ConfirmPassword");
-    private By _registerButton=By.name("register-button");
+    private By _newsletter=By.xpath("//button[contains(@id,'newsletter-subscribe-button')]");
+    private By _gender=By.xpath("//input[starts-with(@id,'gender-male')]");
+    private By _firstName=By.cssSelector("input#FirstName");
+    private By _lastName=By.cssSelector("input#LastName");
+    private By _dateOfBirth=By.xpath("//select[contains(@name,'DateOfBirthDay')]");
+    private By _dateOfMonth=By.xpath("//select[contains(@name,'DateOfBirthMonth')]");
+    private By _dateOfYear=By.xpath("//select[contains(@name,'DateOfBirthYear')]");
+    private By _emailId=By.cssSelector("input#Email");
+    private By _company=By.xpath("//input[starts-with(@name,'Company')]");
+    private By _password=By.cssSelector("input#Password");
+    private By _confirmPassword=By.cssSelector("input#ConfirmPassword");
+    private By _registerButton=By.xpath("//button[text()='Register']");
     LoadProperty loadProperty=new LoadProperty();
       //Applying timestamp
        Timestamp timestamp = new Timestamp(System.currentTimeMillis());

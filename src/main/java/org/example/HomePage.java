@@ -8,14 +8,16 @@ import org.testng.asserts.SoftAssert;
 import java.util.List;
 
 public class HomePage extends Utils{
-    private By _register=By.linkText("Register");
-    private By _euroCurrency=By.xpath("//select[@id='customerCurrency']");
-    private By _selectTextFromDropDown=By.id("customerCurrency");
-    private By _findElements=By.xpath("//span[@class='price actual-price']");
-    private By _typeNike=By.xpath("//input[@type='text']");
-    private By _clickOnSearch=By.xpath("//button[@type='submit']");
+    private By _register=By.cssSelector("a.ico-register");
+    private By _euroCurrency=By.xpath("//select[contains(@id,'customerCurrency')]");
+    private By _selectTextFromDropDown=By.cssSelector("select#customerCurrency");
+    private By _findElements=By.xpath("//span[contains(@class,'price actual-price')]");
+    private By _typeNike=By.xpath("//input[starts-with(@type,'text')]");
+    private By _clickOnSearch=By.cssSelector("button.button-1.search-box-button");
     private By _clickOnComputer=By.xpath("//ul[@class='top-menu notmobile']//a[@href='/computers']");
-    private By _clickOnNewStore=By.linkText("New online store is open!");
+    private By _clickOnNewStore=By.xpath("//a[contains(@class,'news-title')]");
+    private By _clickFacebookSymbol=By.xpath("//li[contains(@class,'facebook')]");
+
 
 
     LoadProperty loadProperty=new LoadProperty();
@@ -66,5 +68,14 @@ public class HomePage extends Utils{
     public void clickOnOpenNewStore(){
         //click on New online store is open! on homepage
         clickOnElement(_clickOnNewStore);
+    }
+    public void clickOnSearchButton(){
+        //click on search button on homepage
+        clickOnElement(_clickOnSearch);
+
+    }
+    public void clickOnFacebookSymbol(){
+        //click on facebook symbol
+        clickOnElement(_clickFacebookSymbol);
     }
 }
